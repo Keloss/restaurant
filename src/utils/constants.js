@@ -1,0 +1,5 @@
+export const MAIN_ROUTE = '/'
+export const ABOUT_ROUTE = '/about'
+export const LK_ROUTE = '/lk'
+export const HISTORY = '/history'
+export const BOOK_TABLE = '/book_table'
