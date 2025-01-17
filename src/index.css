@@ -351,7 +351,7 @@ p {
 .container_1, .container_2 {
   width: 500px;
   margin: 20px 0 20px;
-  padding: 20px;
+  padding: 25px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   background-color: rgb(247, 211, 171);
@@ -393,7 +393,7 @@ p {
 
 .button_save {
   width: 50%;
-  margin-top: 15px;
+  margin-top: 10px;
   margin-left: 125px;
   padding: 10px;
   border-radius: 4px;
@@ -406,6 +406,33 @@ p {
 }
 
 .button_save:hover {
+  background-color: rgb(151, 133, 111);
+}
+
+
+.table-item {
+  width: 100px; /* Уменьшенная ширина блока */
+  margin: 10px 0; /* Отступы между элементами */
+  padding: 10px 0px;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: rgb(194, 165, 129);
+  color: #fff;
+  font-size: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.table-item h3 {
+  width: 50%;
+  margin-left: 25px;
+  text-align: center;
+}
+
+.table-item:hover, 
+.table-item.active{
   background-color: rgb(151, 133, 111);
 }
 

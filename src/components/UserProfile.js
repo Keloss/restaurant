@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import TableCarousel from './TableCarousel';
+
 
 const UserProfile = () => {
   // Состояние для хранения данных пользователя
@@ -13,7 +17,28 @@ const UserProfile = () => {
     date: '',
     time: '',
     count_people: '',
+    table: '',
   })
+
+  const [tables, setTables] = useState([
+    { id: 1, booking: '' },
+    { id: 2, booking: '' },
+    { id: 3, booking: '' },
+    { id: 4, booking: '' },
+    { id: 5, booking: '' },
+    { id: 6, booking: '' },
+    { id: 7, booking: '' },
+    { id: 8, booking: '' },
+    { id: 9, booking: '' },
+    { id: 10, booking: '' },
+  ])
+
+  const [selectedItem, setSelectedItem] = useState(null)
+
+  const handleSelect = (id) => {
+    console.log(id)
+    setSelectedItem(id)
+  }
 
   // Загружаем данные из localStorage при первом рендере компонента
   useEffect(() => {
@@ -59,8 +84,28 @@ const UserProfile = () => {
   };
 
   const handleBooking = () => {
-    alert(`Стол забронирован!\nВаше имя: ${userData.name}\nДата: ${bookData.date}\nВремя: ${bookData.time}\nКоличество человек: ${bookData.count_people}`);
+    setTables(prev => prev.map(table => table.id === selectedItem ? {...table, booking: true} : table))
+    alert(`Стол забронирован!\nВаше имя: ${userData.name}\nДата: ${bookData.date}\nВремя: ${bookData.time}\nКоличество человек: ${bookData.count_people}\nНомер стола: ${selectedItem}`);
   };
+
+  const handleTable = () => {
+    bookData.table = tables.id
+  } 
+
+//   const tables = [
+//     { id: 1, booking: '' },
+//     { id: 2, booking: '' },
+//     { id: 3, booking: '' },
+//     { id: 4, booking: '' },
+//     { id: 5, booking: '' },
+//     { id: 6, booking: '' },
+//     { id: 7, booking: '' },
+//     { id: 8, booking: '' },
+//     { id: 9, booking: '' },
+//     { id: 10, booking: '' },
+// ];
+
+  let [booking, setBooking] = useState(false)
 
   return (
     <div className='main_container_lk'>
@@ -168,6 +213,9 @@ const UserProfile = () => {
                 className='input'
               />
             </label>
+          </div>
+          <div>
+            <TableCarousel tables={tables} onSelect={handleSelect} selectedItem={selectedItem}/>
           </div>
           <button className='button_save' type="button" onClick={handleBooking}>Забронировать</button>
         </form>
